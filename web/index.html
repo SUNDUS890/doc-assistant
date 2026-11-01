@@ -1,37 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document Q&amp;A Assistant</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DocMind AI | Intelligent Document Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="hero">
-    <h1>Document Q&amp;A Assistant</h1>
-    <p>Upload a PDF, ask questions, and get answers with page citations.</p>
-  </header>
 
-  <main class="container">
-    <section class="card upload-card">
-      <h2>1. Upload your PDF</h2>
-      <input type="file" id="file-input" accept="application/pdf">
-      <button id="upload-btn">Upload and index</button>
-      <p id="status" class="status"></p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">✦</span>
+                DocMind AI
+            </a>
+
+          <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#technology">Technology</a>
+    <a href="#workspace">AI Workspace</a>
+</div>
+
+            <a href="#workspace" class="nav-button">
+                Get Started →
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ✨ AI-Powered Document Intelligence
+            </div>
+
+            <h1>
+                Your Documents.<br>
+                <span>Your AI Assistant.</span>
+            </h1>
+
+            <p>
+                Upload your documents, ask questions in natural language,
+                and discover information instantly with AI-powered answers
+                and accurate page references.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#workspace" class="primary-button">
+                    Explore AI Workspace →
+                </a>
+
+                <a href="#how-it-works" class="secondary-button">
+                    How It Works
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                Powered by Gemini · RAG · ChromaDB
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <span class="section-label">FEATURES</span>
+
+            <h2>
+                Everything you need to understand your documents
+            </h2>
+
+            <p>
+                Turn lengthy documents into useful knowledge with
+                an intelligent AI assistant.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Smart PDF Upload</h3>
+                <p>
+                    Upload PDF documents and automatically
+                    extract their text.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Intelligent Search</h3>
+                <p>
+                    Find relevant information using semantic
+                    search and vector embeddings.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>AI Conversations</h3>
+                <p>
+                    Ask questions naturally and receive
+                    context-based AI answers.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Page Citations</h3>
+                <p>
+                    View supporting document pages
+                    alongside your answers.
+                </p>
+            </div>
+
+        </div>
+
     </section>
 
-    <section class="card chat-card">
-      <h2>2. Ask a question</h2>
-      <div id="chat" class="chat"></div>
-      <div class="ask-row">
-        <input type="text" id="question" placeholder="Ask something about your document" disabled>
-        <button id="ask-btn" disabled>Ask</button>
-      </div>
+
+    <!-- How It Works -->
+    <section class="workflow-section" id="how-it-works">
+
+        <div class="section-heading">
+
+            <span class="section-label">HOW IT WORKS</span>
+
+            <h2>From PDF to intelligent answers</h2>
+
+            <p>
+                A simple workflow powered by Retrieval-Augmented Generation.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+            <div class="workflow-card">
+                <span>01</span>
+                <h3>Upload</h3>
+                <p>Upload your PDF document.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>02</span>
+                <h3>Process</h3>
+                <p>Extract text and create embeddings.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>03</span>
+                <h3>Retrieve</h3>
+                <p>Find the most relevant information.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>04</span>
+                <h3>Generate</h3>
+                <p>Receive AI-generated answers with citations.</p>
+            </div>
+
+        </div>
+
     </section>
-  </main>
 
-  <footer>Built by Sundus · RAG with ChromaDB and Gemini</footer>
 
-  <script src="script.js"></script>
+    <!-- AI Workspace -->
+    <section class="workspace-section" id="workspace">
+
+        <div class="section-heading">
+
+            <span class="section-label">AI WORKSPACE</span>
+
+            <h2>Start exploring your documents</h2>
+
+            <p>
+                Upload a PDF and start a conversation with your document.
+            </p>
+
+        </div>
+
+
+        <div class="workspace-container">
+
+            <!-- Upload Area -->
+            <div class="workspace-card upload-card">
+
+                <div class="workspace-card-heading">
+                    <span class="workspace-icon">📁</span>
+
+                    <div>
+                        <h3>Upload your document</h3>
+                        <p>Choose a PDF file to get started.</p>
+                    </div>
+                </div>
+
+                <input
+                    type="file"
+                    id="file-input"
+                    accept="application/pdf"
+                >
+
+                <button id="upload-btn" class="upload-button">
+                    Upload and Index
+                </button>
+
+                <p id="status" class="status"></p>
+
+            </div>
+
+
+            <!-- Chat Area -->
+            <div class="workspace-card chat-card">
+
+                <div class="workspace-card-heading">
+
+                    <span class="workspace-icon">🤖</span>
+
+                    <div>
+                        <h3>Document AI Chat</h3>
+                        <p>Ask anything about your uploaded document.</p>
+                    </div>
+
+                </div>
+
+
+                <div id="chat" class="chat">
+
+                    <div class="welcome-message">
+                        <div class="welcome-icon">✦</div>
+
+                        <h3>Your AI assistant is ready</h3>
+
+                        <p>
+                            Upload a PDF document to start asking questions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="ask-row">
+
+                    <input
+                        type="text"
+                        id="question"
+                        placeholder="Ask something about your document..."
+                        disabled
+                    >
+
+                    <button id="ask-btn" disabled>
+                        Ask →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- Technology Stack -->
+<section class="tech-section" id="technology">
+
+    <div class="section-heading">
+        <span class="section-label">TECHNOLOGY STACK</span>
+        <h2>Built with modern technologies</h2>
+        <p>Powerful tools working together to deliver intelligent document understanding.</p>
+    </div>
+
+    <div class="tech-grid">
+        <div class="tech-card">🐍 Python</div>
+        <div class="tech-card">⚡ FastAPI</div>
+        <div class="tech-card">✨ Google Gemini</div>
+        <div class="tech-card">🗄️ ChromaDB</div>
+        <div class="tech-card">🧠 Sentence Transformers</div>
+        <div class="tech-card">🌐 HTML, CSS & JavaScript</div>
+    </div>
+
+</section>
+<!-- About Section -->
+<section class="about-section" id="about">
+
+    <div class="about-container">
+
+        <div class="about-left">
+            <span class="section-label">ABOUT DOCMIND AI</span>
+
+            <h2>
+                Turning documents into
+                <span>intelligent conversations.</span>
+            </h2>
+
+            <p>
+                DocMind AI transforms the way people interact with
+                documents. Instead of spending hours searching through
+                lengthy PDFs, simply ask questions and get meaningful
+                answers powered by artificial intelligence.
+            </p>
+
+            <p>
+                Built using Retrieval-Augmented Generation (RAG),
+                semantic search and Google's Gemini model, it connects
+                your questions with relevant information from your
+                uploaded documents.
+            </p>
+
+            <a href="#workspace" class="primary-button">
+                Try DocMind AI →
+            </a>
+        </div>
+
+        <div class="about-right">
+
+            <div class="about-highlight">
+                <span>🧠</span>
+                <div>
+                    <h3>Intelligent Understanding</h3>
+                    <p>Find meaningful information from your PDFs.</p>
+                </div>
+            </div>
+
+            <div class="about-highlight">
+                <span>⚡</span>
+                <div>
+                    <h3>Instant Responses</h3>
+                    <p>Get answers without manually searching pages.</p>
+                </div>
+            </div>
+
+            <div class="about-highlight">
+                <span>📚</span>
+                <div>
+                    <h3>Reliable References</h3>
+                    <p>Explore the document pages supporting answers.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- Footer -->
+    <footer class="footer" id="about">
+
+        <div class="footer-content">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">✦</span>
+                DocMind AI
+            </a>
+
+            <p>
+                Built by Sundus | Intelligent Document Q&A
+            </p>
+
+            <p class="footer-tech">
+                Powered by FastAPI · Gemini · ChromaDB · Sentence Transformers
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
