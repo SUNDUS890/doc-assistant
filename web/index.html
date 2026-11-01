@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Q&amp;A Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Document Q&amp;A Assistant</h1>
+    <p>Upload a PDF, ask questions, and get answers with page citations.</p>
+  </header>
+
+  <main class="container">
+    <section class="card upload-card">
+      <h2>1. Upload your PDF</h2>
+      <input type="file" id="file-input" accept="application/pdf">
+      <button id="upload-btn">Upload and index</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="card chat-card">
+      <h2>2. Ask a question</h2>
+      <div id="chat" class="chat"></div>
+      <div class="ask-row">
+        <input type="text" id="question" placeholder="Ask something about your document" disabled>
+        <button id="ask-btn" disabled>Ask</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>Built by Sundus · RAG with ChromaDB and Gemini</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
