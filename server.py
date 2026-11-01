@@ -10,7 +10,7 @@ from google import genai
 from google.genai import types
 from pydantic import BaseModel
 from pypdf import PdfReader
-from sentence_transformers import SentenceTransformer
+
 
 load_dotenv()
 
@@ -29,7 +29,7 @@ SYSTEM_PROMPT = (
 )
 
 app = FastAPI()
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+EMBEDDING_MODEL = "gemini-embedding-001"
 gemini = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 chroma = chromadb.EphemeralClient()
 sessions = {}
@@ -88,7 +88,13 @@ def upload(file: UploadFile = File(...)):
             metadatas.append({"page": i + 1})
     if not documents:
         raise HTTPException(status_code=400, detail="No readable text found. This may be a scanned PDF.")
-    embeddings = embedder.encode(documents).tolist()
+    result = gemini.models.embed_content(
+    model=EMBEDDING_MODEL,
+    contents=documents,
+    config={"task_type": "RETRIEVAL_DOCUMENT"}
+)
+
+    embeddings = [item.values for item in result.embeddings]
     session_id = uuid.uuid4().hex
     collection = chroma.create_collection("docs_" + session_id)
     collection.add(documents=documents, embeddings=embeddings, ids=ids, metadatas=metadatas)
@@ -101,7 +107,13 @@ def ask(req: AskRequest):
     collection = sessions.get(req.session_id)
     if collection is None:
         raise HTTPException(status_code=404, detail="Session expired. Please upload the PDF again.")
-    q_emb = embedder.encode([req.question]).tolist()
+    q_result = gemini.models.embed_content(
+    model=EMBEDDING_MODEL,
+    contents=[req.question],
+    config={"task_type": "RETRIEVAL_QUERY"}
+)
+
+    q_emb = [q_result.embeddings[0].values]
     results = collection.query(query_embeddings=q_emb, n_results=TOP_K)
     chunks = list(zip(results["documents"][0], results["metadatas"][0]))
     context = "\n\n".join("[Page " + str(m["page"]) + "]\n" + d for d, m in chunks)
