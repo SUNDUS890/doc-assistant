@@ -1,70 +1,98 @@
-# Document Q&A Assistant
+# 🚀 DocMind AI – Intelligent Document Question Answering System
 
-Upload a PDF, ask questions in plain English, and get answers with page citations.
+An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Upload PDF documents, ask questions, and receive intelligent, context-aware answers with source references.
 
-**Live demo:** https://doc-assistant-sundus.streamlit.app
+## 🌟 Overview
 
-![App screenshot](screenshot.png)
+DocMind AI simplifies the process of understanding large PDF documents. Instead of manually searching through pages, users can upload documents and interact with their content using natural language.
 
-## What it does
+The application uses RAG architecture to retrieve relevant information from uploaded documents and generate accurate responses using a Large Language Model (LLM).
 
-- Upload any text-based PDF (the first 50 pages are used)
-- Ask questions in a chat box
-- Get answers based only on the document, with page numbers
-- See the exact source passages behind every answer
-- Says so when the answer is not in the document
+## ✨ Key Features
 
-## How it works (RAG pipeline)
+* 📄 PDF document uploading and text extraction.
+* ✂️ Intelligent text chunking.
+* 🧠 Semantic search using vector embeddings.
+* 🗄️ Vector storage and retrieval using ChromaDB.
+* 🤖 AI-powered question answering.
+* 📌 Context-based answers with source references.
+* 💬 Interactive user interface.
 
-1. **Extract:** read the text from each PDF page with pypdf
-2. **Chunk:** split the text into 500-character pieces with 100 characters of overlap
-3. **Embed:** convert each chunk into a vector with the all-MiniLM-L6-v2 sentence-transformers model
-4. **Store:** save the vectors in a ChromaDB collection
-5. **Retrieve:** embed the question and find the 4 most similar chunks
-6. **Generate:** send the chunks and the question to Gemini, with instructions to answer only from the context and cite page numbers
+## 🛠️ Technologies Used
 
-## Tech stack
+| Technology            | Purpose                        |
+| --------------------- | ------------------------------ |
+| Python                | Core programming language      |
+| Streamlit             | User interface                 |
+| Google Gemini API     | Large Language Model           |
+| Sentence Transformers | Text embeddings                |
+| ChromaDB              | Vector database                |
+| PyPDF                 | PDF text extraction            |
+| RAG                   | Retrieval-Augmented Generation |
 
-Python, Streamlit, ChromaDB, sentence-transformers, pypdf, Google Gemini API
+## ⚙️ How It Works
 
-## Reliability
+1. **Document Upload:** Users upload PDF documents.
+2. **Text Extraction:** Text is extracted from the uploaded PDFs.
+3. **Chunking:** Extracted text is divided into smaller chunks.
+4. **Embedding Generation:** Text chunks are converted into vector embeddings.
+5. **Vector Storage:** Embeddings are stored in ChromaDB.
+6. **Semantic Retrieval:** Relevant chunks are retrieved based on the user's question.
+7. **Answer Generation:** Gemini generates an answer using the retrieved context.
+8. **Source References:** Relevant document references are provided with the answer.
 
-If the AI service is busy or rate limited, the app retries and falls back to another Gemini model instead of crashing.
+## 🏗️ Project Architecture
 
-## Run it locally
+PDF Upload → Text Extraction → Text Chunking → Embeddings → ChromaDB → Semantic Retrieval → Gemini LLM → Answer with Sources
 
-1. Clone the repository and open the folder
-2. Create and activate a virtual environment:
+## 💻 Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/SUNDUS890/doc-assistant.git
 ```
-   python -m venv .venv
-   .venv\Scripts\activate
-```
-3. Install the libraries:
-```
-   pip install -r requirements.txt
-```
-4. Create a file named `.env` with your Gemini API key:
-```
-   GEMINI_API_KEY=your-key-here
-```
-5. Start the app:
-```
-   streamlit run app.py
+
+### 2. Navigate to the project directory
+
+```bash
+cd doc-assistant
 ```
 
-## Limitations
+### 3. Install dependencies
 
-- Scanned PDFs (images of pages) are not supported, because there is no OCR step yet
-- Only the first 50 pages are indexed
-- The free Gemini tier has daily usage limits
+```bash
+pip install -r requirements.txt
+```
 
-## Ideas for next versions
+### 4. Configure API credentials
 
-- OCR for scanned documents
-- Support for multiple documents at once
-- Evaluation with a set of test questions
-- A custom HTML/CSS front end
+Add your Gemini API key using the environment variable or configuration method required by your application.
 
-## Author
+Never upload API keys or secrets to GitHub.
 
-Built by Sundus.
+### 5. Run the application
+
+Use the appropriate command for your project entry-point file. For example:
+
+```bash
+streamlit run app.py
+```
+
+## 🎯 Project Objective
+
+The main objective of DocMind AI is to make document interaction faster and easier through Generative AI and Retrieval-Augmented Generation.
+
+## 👩‍💻 Developer
+
+**Sundus Nasar**
+
+B.Tech Data Science Student | AI & ML Enthusiast
+
+GitHub: [SUNDUS890](https://github.com/SUNDUS890)
+
+LinkedIn: [Sundus Nasar](https://www.linkedin.com/in/sundus-nasar/)
+
+---
+
+⭐ If you find this project interesting, feel free to explore the repository!
