@@ -1,7 +1,6 @@
 <p align="center">
   <img src="docmind-banner.png" width="100%">
 </p>
-# 🚀 DocMind AI – Intelligent Document Question Answering System
 
 An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Upload PDF documents, ask questions, and receive intelligent, context-aware answers with source references.
 
